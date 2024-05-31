@@ -15,7 +15,7 @@ func main() {
 	r.Handle("/static/*", http.StripPrefix("/static/", fs))
 
 	r.Get("/", controllers.HomeHandler)
-	r.Get("/article", controllers.ArticlePageHandler)
+	r.Get("/article/{id}", controllers.ArticlePageHandler)
 	r.NotFound(func(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Not Found", http.StatusNotFound)
 	})
